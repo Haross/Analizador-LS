@@ -43,12 +43,12 @@
             </AnchorPane>
             <ScrollPane layoutX="570.0" layoutY="75.0" prefHeight="529.0" prefWidth="131.0" AnchorPane.topAnchor="75.0">
                <content>
-                  <TextArea fx:id="txtdatos" prefHeight="527.0" prefWidth="129.0" wrapText="true" />
+                  <TextArea fx:id="txtDatos" prefHeight="527.0" prefWidth="129.0" wrapText="true" />
                </content>
             </ScrollPane>
             <ScrollPane layoutX="722.0" layoutY="72.0" prefHeight="529.0" prefWidth="131.0" AnchorPane.topAnchor="75.0">
                <content>
-                  <TextArea fx:id="txtDatosOrdenados" prefHeight="527.0" prefWidth="129.0" wrapText="true" />
+                  <TextArea fx:id="txtDatosO" prefHeight="527.0" prefWidth="129.0" wrapText="true" />
                </content>
             </ScrollPane>
             <Label layoutX="590.0" layoutY="54.0" text="Datos leídos" />
