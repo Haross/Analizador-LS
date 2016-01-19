@@ -173,7 +173,7 @@ public class FXMLDocumentController implements Initializable {
 /* Comparaciones del merge según el caso*/
     
     public double mergeBestCase(int n){
-        return n * Math.log(n);
+        return n * Math.log(n) /Math.log(2);
     }
     
     public double insercionCompMax(int n){
