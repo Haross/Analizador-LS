@@ -6,10 +6,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="398.0" prefWidth="486.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="analizadorlexico.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="501.0" prefWidth="546.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="analizadorlexico.FXMLDocumentController">
    <children>
-      <TextArea fx:id="resultado" layoutX="14.0" layoutY="174.0" prefHeight="195.0" prefWidth="436.0" />
-      <TextField fx:id="entrada" layoutX="113.0" layoutY="48.0" />
-      <Button layoutX="316.0" layoutY="48.0" mnemonicParsing="false" onAction="#accion" text="click" />
+      <TextArea fx:id="entrada" layoutX="14.0" layoutY="45.0" prefHeight="195.0" prefWidth="436.0" />
+      <Button layoutX="478.0" layoutY="130.0" mnemonicParsing="false" onAction="#accion" text="click" />
+      <TextArea fx:id="resultado" layoutX="14.0" layoutY="251.0" prefHeight="195.0" prefWidth="436.0" />
    </children>
 </AnchorPane>

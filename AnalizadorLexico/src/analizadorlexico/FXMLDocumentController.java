@@ -30,16 +30,11 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private Label label;
-     @FXML
-    private TextField resultado;
+
       @FXML
-    private TextArea entrada;
+    private TextArea entrada,resultado;
     
-    @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
-    }
+
     private void createLexFile(String path){
         File file = new File(path);
         jflex.Main.generate(file);
@@ -54,7 +49,7 @@ public class FXMLDocumentController implements Initializable {
             System.out.println(ex.getMessage());
         }
     }
-    public void probarLexerFile() throws FileNotFoundException, IOException{
+   public void probarLexerFile() throws FileNotFoundException, IOException{
         File fichero = new File("fichero.txt");
         PrintWriter writer;
         try {
@@ -72,7 +67,7 @@ public class FXMLDocumentController implements Initializable {
         while (true) {            
             Token token = lexer.yylex();
             if(token ==null){
-                Resultados = Resultados + "FIN";
+                Resultados = Resultados ;
                 resultado.setText(Resultados);
                 return;
                 
@@ -81,11 +76,16 @@ public class FXMLDocumentController implements Initializable {
                 case ERROR:
                     Resultados = Resultados + "ERROR, el simblo no coincide \n";
                     break;
-                case Variable:
+                case CAD:
+                case CO:
+                case PR: 
+                case ID:
                 case Numero:
-                    Resultados = Resultados + "Token:"+token+" "+lexer.save+"\n";
+                    Resultados = Resultados + "\nToken: "+token+" "+lexer.save+"\n";
+                    break;
                 default:
                     Resultados = Resultados + "Token: "+token+"\n";
+                    break;
                     
             }
             
