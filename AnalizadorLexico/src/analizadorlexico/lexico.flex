@@ -33,12 +33,15 @@ CO = [%]
 ")" {return PD;}
 "=" {return igual;}
 "+" {return suma;}
+["'!''¡'"]?{D}+[.] {D}+ {save = yytext(); return Numero;}
 ["'!''¡'"]?{D}+ {save = yytext(); return Numero;}
 "*" {return multiplicacion;}
 "-" {return resta;}
 "/" {return division;}
+"==" {return EQUALS;}
+"!=" {return DIF;}
 {CO}({L}|{D})*{CO} {save = yytext();return CO;}
-{CO}({L}|{D})*{CO} {save = yytext();return CAD;}
+{C}({L}|{D})*{C} {save = yytext();return CAD;}
 {L} ({L}|{D})* {save = yytext();return ID;}
 
 . {return ERROR;}
