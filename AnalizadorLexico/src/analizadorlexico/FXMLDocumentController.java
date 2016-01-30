@@ -74,7 +74,7 @@ public class FXMLDocumentController implements Initializable {
             }
             switch(token){
                 case ERROR:
-                    Resultados = Resultados + "ERROR, el simblo no coincide \n";
+                    Resultados = Resultados + "ERROR, sintaxís erronea \n";
                     break;
                 case CAD:
                 case CO:
