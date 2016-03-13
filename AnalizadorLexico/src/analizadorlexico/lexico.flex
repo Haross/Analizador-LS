@@ -6,31 +6,25 @@ import static analizadorlexico.Token.*;
 L=[a-zA-Z_]
 D=[0-9]
 white=[ \t\r\n]
-C= [#]
+C= [op]
 CO = [%]
+
+identificador = {L} ({L}|{D})* 
+T = "int"|"float"|"char"|"double"  
+expresion = {identificador} {simbolo} {identificador}
+simbolo = "!="|"=="|">"|"<"|"<>" 
+impresion = "printf(\""{identificador}"\")"
 %{
     public String save;
 %}
 %%
-<YYINITIAL> hola {save = yytext(); return PR;}
-<YYINITIAL> adios {save = yytext(); return PR;}
-<YYINITIAL> aparecer {save = yytext(); return PR;}
-<YYINITIAL> desaparecer {save = yytext(); return PR;}
-<YYINITIAL> proceso {save = yytext(); return PR;}
-<YYINITIAL> principal {save = yytext(); return PR;}
-<YYINITIAL> comprimir {save = yytext(); return PR;}
-<YYINITIAL> libreria {save = yytext(); return PR;}
-<YYINITIAL> aplicar {save = yytext(); return PR;}
-<YYINITIAL> super {save = yytext(); return PR;}
-<YYINITIAL> devolver {save = yytext(); return PR;}
-<YYINITIAL> si {save = yytext(); return PR;}
-<YYINITIAL> sino {save = yytext(); return PR;}
-<YYINITIAL> mientras {save = yytext(); return PR;}
+ 
+<YYINITIAL> {T} {save = yytext(); return tipo;}
 <YYINITIAL>{
 {white} {/*Ignore*/}
 "//".* {/*Ignore*/}
-"(" {return PI;}
-")" {return PD;}
+
+
 "=" {return igual;}
 "+" {return suma;}
 ["'!''¡'"]?{D}+[.] {D}+ {save = yytext(); return Numero;}
@@ -40,14 +34,23 @@ CO = [%]
 "/" {return division;}
 "==" {return EQUALS;}
 "!=" {return DIF;}
+
+
 {CO}({L}|{D})*{CO} {save = yytext();return CO;}
 {C}({L}|{D})*{C} {save = yytext();return CAD;}
-{L} ({L}|{D})* {save = yytext();return ID;}
+{impresion} {return print;}
+{expresion} {return ExpLogica;}
+"while" {return WHILE;}
+"return" {return RETURN;}
+"," {return coma;}
+";" {return puntoYComa;}
+"(" {return PI;}
+")" {return PD;}
+"{" {return LI;}
+"}" {return LD;}
+"main" {save = yytext();return MAIN;}
+"#include <stdio.h>" {save = yytext(); return INCLUDE;}
+{identificador} {save = yytext();return ID;}
 
 . {return ERROR;}
 }
-
-
-
-
-

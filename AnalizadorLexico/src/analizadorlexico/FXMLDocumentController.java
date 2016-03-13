@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Reader;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,7 +28,7 @@ import javafx.scene.control.TextField;
  */
 public class FXMLDocumentController implements Initializable {
     
-    
+    ArrayList<String> tokens = new ArrayList();
     @FXML
     private Label label;
 
@@ -44,10 +45,13 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void accion(ActionEvent e){
         try {
+            tokens = new ArrayList();
             probarLexerFile();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
+        Gramatica g = new Gramatica(tokens);
+        g.P();
     }
    public void probarLexerFile() throws FileNotFoundException, IOException{
         File fichero = new File("fichero.txt");
@@ -72,13 +76,14 @@ public class FXMLDocumentController implements Initializable {
                 return;
                 
             }
+            tokens.add(token+"");
             switch(token){
                 case ERROR:
                     Resultados = Resultados + "ERROR, sintaxís erronea \n";
                     break;
                 case CAD:
                 case CO:
-                case PR: 
+            
                 case ID:
                 case Numero:
                     Resultados = Resultados + "\nToken: "+token+" "+lexer.save+"\n";
@@ -96,8 +101,8 @@ public class FXMLDocumentController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       String aux = "C:/Users/Javier/Documents/NetBeansProjects/ESD avanzada/MetodosDeOrdenamiento/AnalizadorLexico/src/analizadorlexico/lexico.flex";
-        createLexFile(aux);
+       String aux = "src/analizadorlexico/lexico.flex";
+       createLexFile(aux);
     }    
     
 }

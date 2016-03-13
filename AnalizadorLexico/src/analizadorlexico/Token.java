@@ -10,6 +10,5 @@ package analizadorlexico;
  * @author Javier
  */
 public enum Token {
-    igual, suma,  Numero, multiplicacion, division, ERROR, resta, PR,ID,CAD,CO,PD,PI, EQUALS, DIF;
-    
+   INCLUDE,MAIN,RETURN,WHILE,ExpLogica,print,coma, puntoYComa,tipo,igual, suma,Numero, multiplicacion, division, ERROR, resta, ID,CAD,CO,PD,PI, EQUALS, DIF, LD, LI;
 }
