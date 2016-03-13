@@ -1,28 +1,4 @@
-comprimir a
-libreria loquesea
-super hola
-	principal() hola
-		int x
-		int y
-		int z
-		z = x+y
-		mostrar(z)
-	adios
-	
-	proceso() hola
-		x = ¡3.5+!4.89 - 12
-		z = x
-		si (x==z)
-			mostrar (z)
-		sino
-			mostrar (x)
-		aplicar 
-			mostrar (hola2)
-		mientras (z!=x)
-		devolver (z)
-	adios
-
-%kjskajskas%%ghjk%
-#hjkbj##ghjkl##
-adios
-aparecer
+int main(){
+	int x = 9;
+	int ;
+}

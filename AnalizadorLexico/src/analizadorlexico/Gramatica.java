@@ -88,39 +88,73 @@ public class Gramatica {
              return "Se esperaba una LI";
         } 
           //IDENTIFICADOR
-        
-        try {
-            if (tokens.get(0).equals("tipo")) {
-                tokens.remove(0);
-                try{
-                    if (tokens.get(0).equals("ID")) {
+        String aux = "";
+        try{
+            while(tokens.get(0).equals("tipo")){
+                try {
+                    if (tokens.get(0).equals("tipo")) {
                         tokens.remove(0);
                         try{
-                            if (tokens.get(0).equals("puntoYComa")) {
+                            if (tokens.get(0).equals("ID")) {
                                 tokens.remove(0);
+                                try{
+                                    switch(tokens.get(0)){
+                                    case "igual":
+                                        tokens.remove(0);
+                                        try{
+                                            if (tokens.get(0).equals("Numero")) {
+                                                tokens.remove(0);
+                                                try{
+                                                    if (tokens.get(0).equals("puntoYComa")) {
+                                                        tokens.remove(0);
+                                                    } else {
+                                                        System.out.println("Se esperaba un ;");
+                                                        return "Se esperaba un ;" ;
+                                                    }
+                                                }catch(Exception e){
+                                                    System.out.println("Se esperaba un ;");
+                                                    return "Se esperaba un ;" ;
+                                                }
+                                            } else {
+                                                System.out.println("Se esperaba un numero");
+                                                return "Se esperaba un numero" ;
+                                            }
+                                        }catch(Exception e){
+                                            System.out.println("Se esperaba un numero");
+                                            return "Se esperaba un numero" ;
+                                        }
+                                        break;
+                                    case "puntoYComa":
+                                        tokens.remove(0);
+                                        break;
+                                    default:
+                                        System.out.println("Se esperaba ;");
+                                        return "Se esperaba ;";
+
+                                     }
+                                 }catch(Exception e){
+                                    System.out.println("Se esperaba un ;");
+                                    return "Se esperaba un ;" ;
+                                }   
                             } else {
-                                System.out.println("Se esperaba un ;");
-                                return "Se esperaba un ;" ;
+                                System.out.println("Se esperaba una ID");
+                                return "Se esperaba una ID" ;
                             }
                         }catch(Exception e){
-                            System.out.println("Se esperaba un ;");
-                            return "Se esperaba un ;" ;
+                            System.out.println("Se esperaba una ID");
+                            return "Se esperaba una ID" ;
                         }
                     } else {
-                        System.out.println("Se esperaba una ID");
-                        return "Se esperaba una ID" ;
+                        System.out.println("Se esperaba un tipo");
+                        return "Se esperaba un tipo" ;
                     }
-                }catch(Exception e){
-                    System.out.println("Se esperaba una ID");
-                    return "Se esperaba una ID" ;
-                }
-            } else {
+                } catch (Exception e) {
+                    System.out.println("Se esperaba un tipo");
+                    return "Se esperaba un tipo";
+                } 
+        }} catch (Exception e) {
                 System.out.println("Se esperaba un tipo");
-                return "Se esperaba un tipo" ;
-            }
-        } catch (Exception e) {
-            System.out.println("Se esperaba un tipo");
-            return "Se esperaba un tipo";
+                return "Se esperaba un tipo";
         } 
         //----------------------------------------------//
         try{
