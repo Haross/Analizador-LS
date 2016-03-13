@@ -95,43 +95,63 @@ public class Gramatica {
                     if (tokens.get(0).equals("tipo")) {
                         tokens.remove(0);
                         try{
+                            do{
                             if (tokens.get(0).equals("ID")) {
                                 tokens.remove(0);
                                 try{
-                                    switch(tokens.get(0)){
-                                    case "igual":
-                                        tokens.remove(0);
-                                        try{
-                                            if (tokens.get(0).equals("Numero")) {
-                                                tokens.remove(0);
-                                                try{
-                                                    if (tokens.get(0).equals("puntoYComa")) {
-                                                        tokens.remove(0);
-                                                    } else {
+                                    
+                                        switch(tokens.get(0)){
+                                        case "igual":
+                                            aux ="";
+                                            tokens.remove(0);
+                                            try{
+                                                if (tokens.get(0).equals("Numero")) {
+                                                    tokens.remove(0);
+                                                    try{
+                                                        if (tokens.get(0).equals("puntoYComa") || tokens.get(0).equals("coma")) {
+                                                            aux = tokens.get(0);
+                                                            tokens.remove(0);
+                                                        } else {
+                                                            System.out.println("Se esperaba un ;");
+                                                            return "Se esperaba un ;" ;
+                                                        }
+                                                    }catch(Exception e){
                                                         System.out.println("Se esperaba un ;");
                                                         return "Se esperaba un ;" ;
                                                     }
-                                                }catch(Exception e){
-                                                    System.out.println("Se esperaba un ;");
-                                                    return "Se esperaba un ;" ;
+                                                } else {
+                                                    System.out.println("Se esperaba un numero");
+                                                    return "Se esperaba un numero" ;
                                                 }
-                                            } else {
+                                            }catch(Exception e){
                                                 System.out.println("Se esperaba un numero");
                                                 return "Se esperaba un numero" ;
                                             }
-                                        }catch(Exception e){
-                                            System.out.println("Se esperaba un numero");
-                                            return "Se esperaba un numero" ;
-                                        }
-                                        break;
-                                    case "puntoYComa":
-                                        tokens.remove(0);
-                                        break;
-                                    default:
-                                        System.out.println("Se esperaba ;");
-                                        return "Se esperaba ;";
+                                            break;
+                                        case "puntoYComa":
+                                            aux ="";
+                                            tokens.remove(0);
+                                            break;
+                                        default:
+                                             try{
+                                                 aux="";
+                                                    if (tokens.get(0).equals("coma")) {
+                                                        aux = tokens.get(0);
+                                                        tokens.remove(0);
+                                                    } else {
+                                                        
+                                                        System.out.println("Se esperaba un ;" );
+                                                        return "Se esperaba un ;" ;
+                                                   }
+                                                }catch(Exception e){
+                                                System.out.println("Se esperaba un ;");
+                                                return "Se esperaba un ;" ;
+                                            }
+                                            
 
-                                     }
+                                         }
+                                           
+                                    
                                  }catch(Exception e){
                                     System.out.println("Se esperaba un ;");
                                     return "Se esperaba un ;" ;
@@ -140,6 +160,7 @@ public class Gramatica {
                                 System.out.println("Se esperaba una ID");
                                 return "Se esperaba una ID" ;
                             }
+                            }while(aux.equals("coma"));
                         }catch(Exception e){
                             System.out.println("Se esperaba una ID");
                             return "Se esperaba una ID" ;
